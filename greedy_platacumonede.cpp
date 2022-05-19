@@ -1,5 +1,6 @@
 #include <iostream>
-int m[50], n, i, j, S, nr[50];
+int m[50], n, i, j, S, nr[50], nrm;
+bool solutie;
 using namespace std;
 int sortare_desc()
 {
@@ -22,8 +23,15 @@ void init()
 void tipar()
 {
     cout << endl;
-    for (i = 0; i < n; i++)
-        cout << nr[i] << " monede cu valoarea " << m[i] << endl;
+    if(solutie==false)
+        cout<<"Nu exista solutii!";
+    else
+    {
+        for (i = 0; i < n; i++)
+            cout << nr[i] << " monede cu valoarea " << m[i];
+        cout<<"S-au folosit "<<nrm<<" de monede.";
+    }
+
 }
 int main()
 {
@@ -41,14 +49,18 @@ int main()
     sortare_desc();
     init();
     i = 0;
-    while (S > 0 && i <= n)
+    while (S > 0 && i < n)
     {
         if (m[i] <= S)
         {
             nr[i] = S / m[i];
             S %= m[i];
+            nrm+=nr[i];
         }
         i++;
+        if(i==n-1 && S>0)   //nu mai sunt monede disponibile, insa mai este suma de plata
+            solutie=false;
+
     }
     tipar();
     return 0;
