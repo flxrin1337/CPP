@@ -23,15 +23,14 @@ void init()
 void tipar()
 {
     cout << endl;
-    if(solutie==false)
-        cout<<"Nu exista solutii!";
+    if (solutie == false)
+        cout << "Nu exista solutii!";
     else
     {
         for (i = 0; i < n; i++)
             cout << nr[i] << " monede cu valoarea " << m[i];
-        cout<<"S-au folosit "<<nrm<<" de monede.";
+        cout << "S-au folosit " << nrm << " de monede.";
     }
-
 }
 int main()
 {
@@ -55,12 +54,11 @@ int main()
         {
             nr[i] = S / m[i];
             S %= m[i];
-            nrm+=nr[i];
+            nrm += nr[i];
         }
         i++;
-        if(i==n-1 && S>0)   //nu mai sunt monede disponibile, insa mai este suma de plata
-            solutie=false;
-
+        if (i == n - 1 && S > 0) // nu mai sunt monede disponibile, insa mai este suma de plata
+            solutie = false;
     }
     tipar();
     return 0;
